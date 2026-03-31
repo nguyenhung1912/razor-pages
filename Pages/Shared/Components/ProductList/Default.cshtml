@@ -1,0 +1,27 @@
+@using System.Globalization
+@model List<MyApp.Namespace.Models.Product>
+
+<div class="mt-4">
+    <h3 class="text-info">List Product (View Components)</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C", CultureInfo.CreateSpecificCulture("vi-VN"))</td>
+                    <td>@product.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

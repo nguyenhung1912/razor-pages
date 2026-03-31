@@ -2,10 +2,9 @@
 @model MyApp.Namespace.Pages.Products.IndexModel
 @{
     ViewData["Title"] = "List Product";
-    Layout = "_MyLayout";
 }
 
-<h2>List Product</h2>
+<h2>List Product (Partial Views)</h2>
 
 <table class="product-table table table-bordered">
     <thead class="table-success">
@@ -39,3 +38,7 @@
 {
     <partial name="_ProductDetail" model="Model.SelectedProduct" />
 }
+
+<vc:product-list></vc:product-list>
+
+@await Component.InvokeAsync("ProductList")

@@ -2,7 +2,6 @@
 @model MyApp.Namespace.Pages.Students.IndexModel
 @{
     ViewData["Title"] = "List Student";
-    Layout = "_MyLayout";
 }
 
 <style>
@@ -79,13 +78,7 @@
 
 @if (Model.SelectedStudent != null)
 {
-    <div class="row mt-5">
-        <div class="col-md-6">
-            <partial name="_StudentDetail" model="Model.SelectedStudent" />
-        </div>
-
-        <div class="col-md-6">
-            @await Html.PartialAsync("_StudentDetail", Model.SelectedStudent)
-        </div>
+    <div class="mt-5">
+        <partial name="_StudentDetail" model="Model.SelectedStudent" />
     </div>
 }

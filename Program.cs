@@ -1,10 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
-{
-
-});
+builder.Services.AddRazorPages();
 
 builder.Services.Configure<RouteOptions>(routeOptions =>
 {
