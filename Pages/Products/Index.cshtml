@@ -1,0 +1,41 @@
+@page "{id:int?}"
+@model MyApp.Namespace.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "List Product";
+    Layout = "_MyLayout";
+}
+
+<h2>List Product</h2>
+
+<table class="product-table table table-bordered">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                <td>
+                    <a asp-page="/Products/Index" asp-route-id="@product.Id" class="btn btn-sm btn-primary">
+                        View Detail
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.SelectedProduct != null)
+{
+    <partial name="_ProductDetail" model="Model.SelectedProduct" />
+}

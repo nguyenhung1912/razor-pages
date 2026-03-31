@@ -1,0 +1,14 @@
+@page
+@model MyApp.Namespace.Pages.Foods.IndexModel
+@{
+    ViewData["Title"] = "Menu Food";
+    Layout = "_MyLayout";
+}
+
+<h2>Menu</h2>
+<ul>
+    @foreach (var dish in Model.Dishes)
+    {
+        <li>@dish.FoodName</li>
+    }
+</ul>

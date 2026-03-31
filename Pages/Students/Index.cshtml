@@ -1,0 +1,91 @@
+@page "{id:int?}"
+@model MyApp.Namespace.Pages.Students.IndexModel
+@{
+    ViewData["Title"] = "List Student";
+    Layout = "_MyLayout";
+}
+
+<style>
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #fbfbfb;
+    }
+
+    .student-table th,
+    .student-table td {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .student-table th {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+    }
+
+    .detail-card {
+        border: 1px solid #ddd;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        max-width: 600px;
+        margin-top: 20px;
+    }
+
+    .detail-card h3 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<h2>List Student</h2>
+
+<table class="student-table table table-bordered">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Major</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Major</td>
+                <td>
+                    <a asp-page="/Students/Index" asp-route-id="@student.Id" class="btn btn-sm btn-primary">
+                        View Detail
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@if (Model.SelectedStudent != null)
+{
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <partial name="_StudentDetail" model="Model.SelectedStudent" />
+        </div>
+
+        <div class="col-md-6">
+            @await Html.PartialAsync("_StudentDetail", Model.SelectedStudent)
+        </div>
+    </div>
+}
