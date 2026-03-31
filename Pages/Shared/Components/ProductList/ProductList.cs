@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using MyApp.Namespace.Models;
+using razor_pages.Models;
 
-namespace MyApp.Namespace.ViewComponents
+namespace razor_pages.ViewComponents
 {
     public class ProductList : ViewComponent
     {

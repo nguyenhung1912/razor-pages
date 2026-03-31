@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyApp.Namespace.Models;
+using razor_pages.Models;
 
-namespace MyApp.Namespace.Pages.Students
+namespace razor_pages.Pages.Students
 {
     public class IndexModel : PageModel
     {

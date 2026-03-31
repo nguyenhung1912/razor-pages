@@ -1,4 +1,4 @@
-namespace MyApp.Namespace.Models
+namespace razor_pages.Models
 {
     public class Product
     {
@@ -6,5 +6,6 @@ namespace MyApp.Namespace.Models
         public string Name { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public string Description { get; set; } = string.Empty;
+        public int SoldQuantity { get; set; }
     }
 }

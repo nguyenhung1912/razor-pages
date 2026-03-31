@@ -1,4 +1,4 @@
-namespace MyApp.Namespace.Models
+namespace razor_pages.Models
 {
     public class Student
     {
