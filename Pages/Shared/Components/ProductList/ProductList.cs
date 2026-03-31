@@ -5,7 +5,7 @@ namespace razor_pages.ViewComponents
 {
     public class ProductList : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string sortOrder = "asc")
         {
             var products = new List<Product>
             {
@@ -14,6 +14,16 @@ namespace razor_pages.ViewComponents
                new Product {Id = 3, Name = "Oppo", Price = 5000000, Description = "Oppo ABC"},
                new Product {Id = 4, Name = "Google Pixel", Price = 10000000, Description = "Google Pixel ABC"},
             };
+
+            if (sortOrder.ToLower() == "desc")
+            {
+                products = products.OrderByDescending(p => p.Price).ToList();
+            }
+            else
+            {
+                products = products.OrderBy(p => p.Price).ToList();
+            }
+
             return View(products);
         }
     }
