@@ -1,7 +1,10 @@
+using razor_pages.Services;
+using razor_pages.Services.Products;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
-
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.Configure<RouteOptions>(routeOptions =>
 {
     routeOptions.LowercaseUrls = true;
