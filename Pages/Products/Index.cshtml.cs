@@ -16,6 +16,7 @@ namespace razor_pages.Pages.Products
                new Product {Id = 2, Name = "Samsung", Price = 20000000, Description = "Samsung ABC"},
                new Product {Id = 3, Name = "Oppo", Price = 5000000, Description = "Oppo ABC"},
                new Product {Id = 4, Name = "Google Pixel", Price = 10000000, Description = "Google Pixel ABC"},
+               new Product {Id = 5, Name = "Xiaomi", Price = 8000000, Description = "Xiaomi Note 12"},
             };
 
             if (id.HasValue) SelectedProduct = Products.FirstOrDefault(s => s.Id == id.Value);

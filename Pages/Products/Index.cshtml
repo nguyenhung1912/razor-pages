@@ -44,8 +44,8 @@
 @* <vc:product-list sort-order="desc"></vc:product-list> *@
 @* <vc:best-sellers></vc:best-sellers> *@
 
-@await Component.InvokeAsync("ProductList")
-@await Component.InvokeAsync("ProductList", new { sortOrder = "asc" })
+@* @await Component.InvokeAsync("ProductList") *@
+@await Component.InvokeAsync("ProductList", new { sortOrder = "asc", quantity = 5 })
 @* @await Component.InvokeAsync("ProductList", new { sortOrder = "desc" }) *@
-
+@await Component.InvokeAsync("ProductList", new { sortAsc = false, quantity = 5 })
 @await Component.InvokeAsync("BestSellers")
