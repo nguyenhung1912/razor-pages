@@ -1,0 +1,20 @@
+@model List<string>
+
+<div class="card mt-4 mb-4 shadow-sm border-info">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Category: <strong>@ViewBag.CategoryName</strong></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <li class="list-group-item">@item</li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item text-danger">No products found for this category.</li>
+        }
+    </ul>
+</div>

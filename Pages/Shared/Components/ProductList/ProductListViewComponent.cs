@@ -14,7 +14,7 @@ namespace razor_pages.ViewComponents
             _productService = productService;
         }
 
-        public IViewComponentResult Invoke(bool sortAsc = true, int quantity = 4)
+        public async Task<IViewComponentResult> InvokeAsync(bool sortAsc = true, int quantity = 4)
         {
             var products = _productService.GetAllProducts();
 

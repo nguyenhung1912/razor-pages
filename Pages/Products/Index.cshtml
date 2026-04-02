@@ -49,3 +49,5 @@
 @* @await Component.InvokeAsync("ProductList", new { sortOrder = "desc" }) *@
 @await Component.InvokeAsync("ProductList", new { sortAsc = false, quantity = 5 })
 @await Component.InvokeAsync("BestSellers")
+@await Component.InvokeAsync("ProductByCategory", new { category = "Electronics" })
+@await Component.InvokeAsync("ProductByCategory", new { category = "Books" })
