@@ -16,5 +16,10 @@ namespace razor_pages.Services
                new Product {Id = 5, Name = "Xiaomi", Price = 8000000, Description = "Xiaomi Note 12"}
             };
         }
+
+        public Product? GetProductById(int id)
+        {
+            return GetAllProducts().FirstOrDefault(p => p.Id == id);
+        }
     }
 }
