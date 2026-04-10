@@ -1,11 +1,59 @@
 @page
 @model razor_pages.Pages.Products.IndexModel
+
 @{
-    ViewData["Title"] = "List Product";
+    ViewData["Title"] = "Product";
 }
 
-@await Component.InvokeAsync("ProductList", new { sortAsc = true, quantity = 5 })
+<h1 class="mb-4">List Product</h1>
 
-@await Component.InvokeAsync("BestSellers")
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Products != null && Model.Products.Count > 0)
+        {
+            foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                    <td class="text-success fw-bold">@product.Price.ToString("N0") VNĐ</td>
+                    <td class="text-center">
+                        <a asp-page="./Index" asp-route-id="@product.Id" class="btn btn-sm btn-primary">View Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">No products!</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-@await Component.InvokeAsync("ProductByCategory", new { category = "Electronics" })
+@if (Model.SelectedProduct != null)
+{
+    <div class="card bg-light mb-4">
+        <div class="card-body">
+            <h4>Product Details</h4>
+            <p><strong>ID:</strong> @Model.SelectedProduct.Id</p>
+            <p><strong>Name:</strong> @Model.SelectedProduct.Name</p>
+            <p><strong>Price:</strong> @Model.SelectedProduct.Price.ToString("N0") VNĐ</p>
+            <p><strong>Description:</strong> @Model.SelectedProduct.Description</p>
+        </div>
+    </div>
+}
+
+
+

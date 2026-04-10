@@ -3,7 +3,10 @@ using razor_pages.Services.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(opt =>
+{
+    opt.Conventions.AddPageRoute("/Products/Index", "");
+});
 builder.Services.AddSingleton<IProductService, ProductService>();
 builder.Services.Configure<RouteOptions>(routeOptions =>
 {
