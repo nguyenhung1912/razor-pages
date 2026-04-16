@@ -5,9 +5,14 @@ namespace razor_pages.Services
 {
     public class ProductService : IProductService
     {
-        public List<Product> GetAllProducts()
+        private List<Product> _products;
+        public ProductService()
         {
-            return new List<Product>
+            LoadAll();
+        }
+        public void LoadAll()
+        {
+            _products = new List<Product>
             {
               new Product { Id = 1, Name = "iPhone 13", Price = 20000000, Category = "Phone", Description = "Apple smartphone" },
               new Product { Id = 2, Name = "Samsung S23", Price = 18000000, Category = "Phone", Description = "Samsung smartphone" },
@@ -18,9 +23,36 @@ namespace razor_pages.Services
             };
         }
 
+        public List<Product> GetAllProducts()
+        {
+            return _products;
+        }
+
         public Product? GetProductById(int id)
         {
-            return GetAllProducts().FirstOrDefault(p => p.Id == id);
+            return _products.FirstOrDefault(p => p.Id == id);
+        }
+
+        public List<Product> Search(string searchKeyWord)
+        {
+            if (string.IsNullOrWhiteSpace(searchKeyWord))
+            {
+                return _products;
+            }
+            return _products
+                .Where(p => p.Name.ToLower().Contains(searchKeyWord.ToLower()))
+                .ToList();
+        }
+
+        public void RemoveAll()
+        {
+            _products.Clear();
+        }
+
+        public void Add(Product product)
+        {
+            product.Id = _products.Count > 0 ? _products.Max(p => p.Id) + 1 : 1;
+            _products.Add(product);
         }
     }
 }
