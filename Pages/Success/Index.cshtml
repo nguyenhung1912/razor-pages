@@ -1,0 +1,16 @@
+@page "noti"
+@model razor_pages.Pages.Success.IndexModel
+
+@{
+    ViewData["Title"] = "Đăng ký thành công";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-lg-6 text-center">
+        <div class="alert alert-info shadow-sm py-5 border-0" role="alert">
+            <h2 class="display-6 fw-bold mb-3">Đăng ký thành công!</h2>
+            <p class="lead mb-4 text-dark">Tài khoản của bạn đã được tạo thành công trên hệ thống.</p>
+            <a asp-page="/Register/Index" class="btn btn-outline-primary px-4">Quay lại trang đăng ký</a>
+        </div>
+    </div>
+</div>

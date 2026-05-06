@@ -1,0 +1,44 @@
+@page
+@model razor_pages.Pages.Students.RegisterModel
+@{
+    ViewData["Title"] = "Đăng ký sinh viên";
+}
+
+<div class="container mt-4">
+    <h2>Đăng ký sinh viên</h2>
+    @if (Model.IsRegistered)
+    {
+        <div class="alert alert-success">Đăng ký thành công! Ảnh đại diện của bạn đã được lưu tại: @Model.Student.AvatarPath
+        </div>
+    }
+    else
+    {
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="Student.FullName" class="form-label">Họ Tên</label>
+                <input asp-for="Student.FullName" class="form-control" />
+                <span asp-validation-for="Student.FullName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.Email" class="form-label">Email</label>
+                <input asp-for="Student.Email" class="form-control" />
+                <span asp-validation-for="Student.Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.DateOfBirth" class="form-label">Ngày Sinh</label>
+                <input asp-for="Student.DateOfBirth" class="form-control" />
+                <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.Password" class="form-label">Mật khẩu</label>
+                <input asp-for="Student.Password" class="form-control" />
+                <span asp-validation-for="Student.Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ảnh đại diện:</label>
+                <input type="file" asp-for="AvatarFile" class="form-control" accept="image/*" />
+            </div>
+            <button type="submit" class="btn btn-primary">Đăng ký Sinh Viên</button>
+        </form>
+    }
+</div>

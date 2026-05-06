@@ -1,18 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using razor_pages.Models;
-using razor_pages.Services.Products;
+using razor_pages.Services;
+
 namespace razor_pages.Pages.Products
 {
     public class IndexModel : PageModel
     {
-        private readonly IProductService _productService;
-
-        public IndexModel(IProductService productService)
-        {
-            _productService = productService;
-        }
-
         public List<Product> Products { get; set; } = new List<Product>();
 
         public Product? SelectedProduct { get; set; }
@@ -20,44 +14,28 @@ namespace razor_pages.Pages.Products
         [BindProperty(SupportsGet = true)]
         public string? SearchKeyWord { get; set; }
 
-        [BindProperty]
-        public Product InputProduct { get; set; } = new Product();
-
         public void OnGet(int? id)
         {
             if (!string.IsNullOrEmpty(SearchKeyWord))
             {
-                Products = _productService.Search(SearchKeyWord);
+                Products = DataService.GetAll()
+                    .Where(p => p.Name.ToLower().Contains(SearchKeyWord.ToLower()))
+                    .ToList();
             }
             else
             {
-                Products = _productService.GetAllProducts();
+                Products = DataService.GetAll();
             }
 
             if (id.HasValue)
             {
-                SelectedProduct = _productService.GetProductById(id.Value);
+                SelectedProduct = DataService.GetById(id.Value);
             }
         }
 
-        public IActionResult OnGetRemoveAll()
+        public IActionResult OnGetDelete(int id)
         {
-            _productService.RemoveAll();
-            return RedirectToPage();
-        }
-
-        public IActionResult OnGetLoadAll()
-        {
-            _productService.LoadAll();
-            return RedirectToPage();
-        }
-
-        public IActionResult OnPostCreate()
-        {
-            if (ModelState.IsValid)
-            {
-                _productService.Add(InputProduct);
-            }
+            DataService.Delete(id);
             return RedirectToPage();
         }
     }

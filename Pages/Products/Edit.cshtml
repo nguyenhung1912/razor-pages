@@ -1,0 +1,32 @@
+@page "{id:int}"
+@model razor_pages.Pages.Products.EditModel
+@{
+    ViewData["Title"] = "Sửa Sản Phẩm";
+}
+
+<h2>Sửa Sản Phẩm</h2>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="InputProduct.Id" />
+    <div class="mb-3">
+        <label asp-for="InputProduct.Name" class="form-label">Tên SP</label>
+        <input asp-for="InputProduct.Name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InputProduct.Price" class="form-label">Giá</label>
+        <input asp-for="InputProduct.Price" type="number" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InputProduct.Category" class="form-label">Danh mục</label>
+        <input asp-for="InputProduct.Category" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InputProduct.Description" class="form-label">Mô tả</label>
+        <textarea asp-for="InputProduct.Description" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cập nhật Hình Ảnh (Tùy chọn)</label>
+        <input type="file" asp-for="ImageFile" class="form-control" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-warning">Cập nhật</button>
+    <a asp-page="./Index" class="btn btn-secondary">Hủy</a>
+</form>

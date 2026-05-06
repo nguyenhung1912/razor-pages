@@ -1,0 +1,26 @@
+@page
+@model razor_pages.Pages.Products.CreateModel
+@{
+    ViewData["Title"] = "Thêm Sản Phẩm Mới";
+}
+
+<h2>Thêm Sản Phẩm</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="InputProduct.Name" class="form-label">Tên SP</label>
+        <input asp-for="InputProduct.Name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InputProduct.Category" class="form-label">Danh mục</label>
+        <input asp-for="InputProduct.Category" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InputProduct.Price" class="form-label">Giá</label>
+        <input asp-for="InputProduct.Price" type="number" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Hình Ảnh</label>
+        <input type="file" asp-for="ImageFile" class="form-control" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-success">Lưu Sản Phẩm</button>
+</form>

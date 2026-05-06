@@ -1,0 +1,15 @@
+@page "/product/{id?}"
+@model razor_pages.Pages.ProductPageModel
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    @if (Model.product != null)
+    {
+        <h2>@Model.product.Name</h2>
+        <p>Mô tả: @Model.product.Description</p>
+        <p>Giá: @Model.product.Price</p>
+    }
+
+    <a href="/Products/List">Danh sách sản phẩm</a>
+</div>
