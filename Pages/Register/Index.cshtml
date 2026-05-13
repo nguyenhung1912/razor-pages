@@ -13,24 +13,24 @@
                 
                 <form method="post">
                     <div class="mb-3">
-                        <label asp-for="User.Username" class="form-label fw-semibold"></label>
-                        <input type="text" asp-for="User.Username" class="form-control"
+                        <label asp-for="NewUser.Username" class="form-label fw-semibold"></label>
+                        <input type="text" asp-for="NewUser.Username" class="form-control"
                                placeholder="Nhập tên đăng nhập..." />
-                        <span asp-validation-for="User.Username" class="text-danger small"></span>
+                        <span asp-validation-for="NewUser.Username" class="text-danger small"></span>
                     </div>
                     
                     <div class="mb-3">
-                        <label asp-for="User.Email" class="form-label fw-semibold"></label>
-                        <input type="text" asp-for="User.Email" class="form-control"
+                        <label asp-for="NewUser.Email" class="form-label fw-semibold"></label>
+                        <input type="text" asp-for="NewUser.Email" class="form-control"
                                placeholder="Nhập email của bạn..." />
-                        <span asp-validation-for="User.Email" class="text-danger small"></span>
+                        <span asp-validation-for="NewUser.Email" class="text-danger small"></span>
                     </div>
                     
                     <div class="mb-4">
-                        <label asp-for="User.Password" class="form-label fw-semibold"></label>
-                        <input type="password" asp-for="User.Password" class="form-control"
+                        <label asp-for="NewUser.Password" class="form-label fw-semibold"></label>
+                        <input type="password" asp-for="NewUser.Password" class="form-control"
                                placeholder="Nhập mật khẩu..." />
-                        <span asp-validation-for="User.Password" class="text-danger small"></span>
+                        <span asp-validation-for="NewUser.Password" class="text-danger small"></span>
                     </div>
                     
                     <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Đăng ký</button>

@@ -7,7 +7,7 @@ namespace razor_pages.Pages.Register
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public UserModel User { get; set; }
+        public UserModel NewUser { get; set; } = default!;
 
         public IActionResult OnPost()
         {

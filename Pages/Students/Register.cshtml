@@ -1,4 +1,4 @@
-@page
+@page "/register"
 @model razor_pages.Pages.Students.RegisterModel
 @{
     ViewData["Title"] = "Đăng ký sinh viên";
@@ -8,8 +8,7 @@
     <h2>Đăng ký sinh viên</h2>
     @if (Model.IsRegistered)
     {
-        <div class="alert alert-success">Đăng ký thành công! Ảnh đại diện của bạn đã được lưu tại: @Model.Student.AvatarPath
-        </div>
+        <div class="alert alert-success">Đăng ký thành công!</div>
     }
     else
     {
@@ -36,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Ảnh đại diện:</label>
-                <input type="file" asp-for="AvatarFile" class="form-control" accept="image/*" />
+                <input type="file" asp-for="AvatarFile" class="form-control" accept=".png,.jpg,.jpeg" />
             </div>
             <button type="submit" class="btn btn-primary">Đăng ký Sinh Viên</button>
         </form>
